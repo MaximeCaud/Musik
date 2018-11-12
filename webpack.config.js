@@ -18,7 +18,13 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if you JavaScript imports CSS.
      */
-    .addEntry('home', './assets/Front/js/home.js')
+    .addEntry('Front/index', './assets/Front/js/index.js')
+    .addEntry('Front/about', './assets/Front/js/about.js')
+    .addEntry('Front/event', './assets/Front/js/event.js')
+    .addEntry('Front/contact', './assets/Front/js/contact.js')
+    .addEntry('Front/media', './assets/Front/js/media.js')
+
+    .addEntry('Back/index', './assets/Back/js/index.js')
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 

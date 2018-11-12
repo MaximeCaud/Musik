@@ -1,5 +1,4 @@
-const $ = require('jquery');
-require('../css/home.scss');
+require('../css/event.scss');
 require('bootstrap');
 
 $(document).ready(function () {
