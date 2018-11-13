@@ -1,12 +1,61 @@
 {% extends 'template.html.twig' %}
 
-{% block stylesheets %}
+{% block title %}Home{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/Front/index.css') }}">
 {% endblock %}
 
 {% block body %}
+    {{ include(':Front/partials:_nav.html.twig') }}
+    <section id="home" data-bg="dfgdfgdfg">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque distinctio error eveniet facilis fuga impedit molestias nam, perferendis quam quos repellendus repudiandae sequi voluptas.
+    </section>
+    <section id="lastNews">
+        <h1>last News<primary>.</primary></h1>
+        <div class="lastnewsWrapper container">
+            <div class="lastnewsItem">
 
+            </div>
+            <div class="lastnewsItem">
+
+            </div>
+            <div class="lastnewsItem">
+
+            </div>
+            <div class="lastnewsItem">
+
+            </div>
+            <div class="lastnewsItem">
+
+            </div>
+            <div class="lastnewsItem">
+
+            </div>
+
+        </div>
+    </section>
+    <section id="lastMedia">
+        <h1>last Media<primary>.</primary></h1>
+        <div class="lastmediaWrapper container">
+            <div class="lastmediaItem">
+
+            </div>
+            <div class="lastmediaItem">
+
+            </div>
+            <div class="lastmediaItem">
+
+            </div>
+            <div class="lastmediaItem">
+
+            </div>
+
+        </div>
+    </section>
+    {{ include(':Front/partials:_footer.html.twig') }}
 {% endblock %}
 
 {% block javascripts %}
+    <script src="{{ asset('build/Front/index.js') }}"></script>
 {% endblock %}

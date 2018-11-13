@@ -1,2 +1,16 @@
 @import "~bootstrap/scss/bootstrap";
 @import "global";
+
+.lastnewsWrapper, .lastmediaWrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  .lastnewsItem, .lastmediaItem{
+    width: 49%;
+    min-height: 200px;
+    background: red;
+    margin: 5px;
+  }
+}

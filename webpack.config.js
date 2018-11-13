@@ -1,5 +1,5 @@
 var Encore = require('@symfony/webpack-encore');
-const CopyWebPackPlugin = require('copy-webpack-plugin');
+var CopyWebPackPlugin = require('copy-webpack-plugin');
 
 Encore
 // directory where compiled assets will be stored
@@ -23,6 +23,7 @@ Encore
     .addEntry('Front/event', './assets/Front/js/event.js')
     .addEntry('Front/contact', './assets/Front/js/contact.js')
     .addEntry('Front/media', './assets/Front/js/media.js')
+    .addEntry('Front/news', './assets/Front/js/news.js')
 
     .addEntry('Back/index', './assets/Back/js/index.js')
     //.addEntry('page1', './assets/js/page1.js')

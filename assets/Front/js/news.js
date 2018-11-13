@@ -1,4 +1,4 @@
-require('../css/index.scss');
+require('../css/news.scss');
 require('bootstrap');
 
 $(document).ready(function () {

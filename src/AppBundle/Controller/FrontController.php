@@ -56,4 +56,14 @@ class FrontController extends Controller
 
         ));
     }
+
+    /**
+     * @Route("/news", name="front.news")
+     */
+    public function newsAction()
+    {
+        return $this->render(':Front:news.html.twig',array(
+
+        ));
+    }
 }
