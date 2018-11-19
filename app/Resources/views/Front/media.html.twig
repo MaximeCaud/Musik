@@ -1,12 +1,32 @@
 {% extends 'template.html.twig' %}
 
-{% block stylesheets %}
+{% block title %}Media{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/Front/media.css') }}">
 {% endblock %}
 
 {% block body %}
+    {{ include(':Front/partials:_nav.html.twig') }}
+    <section class="video">
+        <h1 class="sectionTitle">Sound<primary>.</primary></h1>
+        <div class="soundWrapper">
 
+        </div>
+    </section>
+    <section class="clip">
+        <h1 class="sectionTitle">Clip<primary>.</primary></h1>
+        <div class="clipWrapper container">
+            <div class="col-md-6"></div>
+            <div class="col-md-6"></div>
+            <div class="col-md-6"></div>
+            <div class="col-md-6"></div>
+        </div>
+    </section>
+
+    {{ include(':Front/partials:_footer.html.twig') }}
 {% endblock %}
 
 {% block javascripts %}
+    <script src="{{ asset('build/Front/media.js') }}"></script>
 {% endblock %}

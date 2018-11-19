@@ -12,7 +12,15 @@ class FrontController extends Controller
      */
     public function indexAction()
     {
+        $manager = $this->getDoctrine()->getManager();
+
+        $news = $manager->getRepository('AppBundle:News')
+            ->findBy(array(), array('createdAt' => 'asc'), 6 , 0);
+        $media = $manager->getRepository('AppBundle:Media')
+            ->findBy(array(), array('publishedAt' => 'asc'), 4 ,0);
         return $this->render(':Front:index.html.twig', array(
+            'listnews'  =>  $news,
+            'listmedia' =>  $media,
 
         ));
     }

@@ -1,2 +1,10 @@
 @import "~bootstrap/scss/bootstrap";
 @import "global";
+
+.aboutWrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f1f1f1;
+  height: calc(100vh - 125px);
+}

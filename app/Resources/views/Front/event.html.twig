@@ -1,12 +1,95 @@
 {% extends 'template.html.twig' %}
 
-{% block stylesheets %}
+{% block title %}Event{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/Front/event.css') }}">
 {% endblock %}
 
 {% block body %}
+    {{ include(':Front/partials:_nav.html.twig') }}
+    <section class="lastevent">
+        <div class="lasteventWrapper col-sm-12 col-md-10 row">
+            <div class="d-none d-md-block col-md-6 eventImg">
 
+            </div>
+            <div class="col-sm-12 col-md-6 eventWrapper">
+                <div class="col-md-12 eventDesc"></div>
+                <div class="eventList row">
+                    <a href="#" class="col-sm-2 col-md-2 eventItem">
+
+                    </a>
+                    <a href="#" class="col-sm-2 col-md-2 eventItem">
+
+                    </a>
+                    <a href="#" class="col-sm-2 col-md-2 eventItem">
+
+                    </a>
+                    <a href="#" class="col-sm-2 col-md-2 eventItem">
+
+                    </a>
+                    <a href="#" class="col-sm-2 col-md-2 eventItem">
+
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="listevent container-fluid">
+        <h1 class="sectionTitle">UPCOMING EVENTS<primary>.</primary></h1>
+        <div class="eventWrapper container-fluid">
+            <div class="eventItem row">
+                <div class="eventDate col-sm-2 col-md-1">
+                    <h1>20</h1>
+                    <h5>Nov<primary>.</primary></h5>
+                </div>
+                <div class="eventDesc col-md-4">
+                    <h1>Title</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid.</p>
+                </div>
+                <div class="eventAdress col-md-3">
+                    <h1>City:</h1>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+                <div class="eventPrice col-md-2">
+                    <h5>Ticket:</h5>
+                    <h1>21€</h1>
+                </div>
+                <div class="eventBuy col-md-2">
+                    <a href="#">
+                        <button type="button" class="btn btn-danger">Danger</button>
+                    </a>
+                </div>
+            </div>
+            <div class="eventItem row">
+                <div class="eventDate col-sm-2 col-md-1">
+                    <h1>20</h1>
+                    <h5>Nov<primary>.</primary></h5>
+                </div>
+                <div class="eventDesc col-md-4">
+                    <h1>Title</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid.</p>
+                </div>
+                <div class="eventAdress col-md-3">
+                    <h1>City:</h1>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+                <div class="eventPrice col-md-2">
+                    <h5>Ticket:</h5>
+                    <h1>21€</h1>
+                </div>
+                <div class="eventBuy col-md-2">
+                    <a href="#">
+                        <button type="button" class="btn btn-danger">Danger</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{ include(':Front/partials:_footer.html.twig') }}
 {% endblock %}
 
 {% block javascripts %}
+    <script src="{{ asset('build/Front/event.js') }}"></script>
 {% endblock %}

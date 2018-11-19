@@ -1,2 +1,118 @@
 @import "~bootstrap/scss/bootstrap";
 @import "global";
+
+.lastevent{
+  display: flex;
+  align-items: center !important;
+  justify-content: center;
+
+  .lasteventWrapper{
+    height: 50vh !important;
+    background: red;
+    padding: 0px !important;
+
+    .eventImg{
+      background: blue;
+      height: 100%;
+    }
+
+    .eventWrapper{
+      background: green;
+      height: 100%;
+      padding: 0px;
+
+      .eventDesc{
+        height: 80%;
+        background: yellow;
+      }
+
+      .eventList{
+        height: 20%;
+        margin: 0px;
+        justify-content: center;
+
+        a{
+          padding: 0px;
+          border: 1px solid red;
+        }
+      }
+    }
+  }
+}
+
+
+
+.listevent{
+  padding-bottom: 50px;
+  .eventWrapper{
+    color: #f1f1f1;
+    .eventItem{
+      margin-top: 20px;
+      border-bottom: 1px solid gray;
+      min-height: 120px;
+      display: flex;
+      justify-content: center;
+      .eventDate{
+        border-left: 2px solid $danger;
+      }
+      .eventDate, .eventDesc, .eventAdress, .eventAdress, .eventPrice, .eventBuy{
+        height: 100px;
+
+      }
+
+      .eventDate{
+        font-family: 'Oswald', sans-serif;
+        text-align: center;
+        padding:0px 10px;
+        h1{
+          font-weight: bold;
+          margin: 0px;
+          font-size: 50px;
+        }
+        h5{
+          font-weight: lighter;
+        }
+      }
+
+      .eventDesc{
+        text-align: left;
+        h1{
+          color: $danger;
+          font-weight: bold;
+          font-size: 30px;
+        }
+        p{
+          color: gray;
+        }
+      }
+
+      .eventAdress{
+        h1{
+          font-weight: bold;
+          font-size: 30px;
+          text-align: left;
+        }
+        p{
+          color: $danger;
+        }
+      }
+
+      .eventPrice{
+        h5{
+          color: $danger;
+        }
+        h1{
+          font-weight: bold;
+          margin: 0px;
+          font-size: 50px;
+        }
+      }
+
+      .eventBuy{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}

@@ -1,12 +1,30 @@
 {% extends 'template.html.twig' %}
 
-{% block stylesheets %}
+{% block title %}Home{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/Front/about.css') }}">
 {% endblock %}
 
 {% block body %}
-
+    {{ include(':Front/partials:_nav.html.twig') }}
+    <section class="about">
+        <h1 class="sectionTitle">About<primary>.</primary></h1>
+        <div class="aboutWrapper container row">
+            <div class="col-md-6">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur atque cum eius illum ipsum laboriosam magni maxime quae quas voluptatem! Ad consequuntur corporis, ea id impedit inventore ipsa molestiae similique voluptas voluptatum. Alias blanditiis consectetur delectus earum enim fugiat harum, hic illum laboriosam libero possimus quia ratione reiciendis velit, voluptatem!
+            </div>
+            <div class="col-md-6">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi at consectetur cupiditate delectus dolore dolorem dolorum eos error eum eveniet excepturi facilis harum illo in ipsam iure labore magnam molestiae molestias mollitia obcaecati optio, possimus praesentium sapiente temporibus vel voluptate voluptates? A ab accusantium ad aperiam dignissimos distinctio ea, error libero maxime provident quae, quas, quidem quis reprehenderit vitae voluptatibus.
+            </div>
+        </div>
+    </section>
+    <section class="contact">
+        <h1 class="sectionTitle">Contact<primary>.</primary></h1>
+    </section>
+    {{ include(':Front/partials:_footer.html.twig') }}
 {% endblock %}
 
 {% block javascripts %}
+    <script src="{{ asset('build/Front/about.js') }}"></script>
 {% endblock %}
