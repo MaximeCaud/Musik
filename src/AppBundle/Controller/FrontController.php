@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class FrontController extends Controller
@@ -50,8 +51,14 @@ class FrontController extends Controller
      */
     public function eventAction()
     {
+        $manager = $this->getDoctrine()->resetManager();
+        $lastevent = $manager->getRepository('AppBundle:Event')
+            ->findBy(array(), array('date' => 'asc'), 5 , 0);
+        $events = $manager->getRepository('AppBundle:Event')
+            ->findBy(array(), array('date' => 'asc'), 10 , 0);
         return $this->render(':Front:event.html.twig', array(
-
+            'events'        =>  $events,
+            'lastEvent'     =>  $lastevent,
         ));
     }
 
@@ -68,10 +75,36 @@ class FrontController extends Controller
     /**
      * @Route("/news", name="front.news")
      */
-    public function newsAction()
+    public function newsAction( Request $request)
     {
-        return $this->render(':Front:news.html.twig',array(
+        $manager    = $this->get('doctrine.orm.entity_manager');
+        $dql        = "SELECt a FROM AppBundle:News a";
+        $query      = $manager->createQuery($dql);
 
+        $paginator  = $this->get('knp_paginator');
+        $pagination  = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            6
+        );
+        return $this->render(':Front:news.html.twig',array(
+            'pagination'    => $pagination
+        ));
+    }
+
+    /**
+     * @Route("/view/{id}", name="front.news.view")
+     */
+    public function viewNewsAction($id)
+    {
+        $manager = $this->getDoctrine()->getManager();
+        $news = $manager->getRepository('AppBundle:News')
+            ->find($id);
+        $lastNews = $manager->getRepository('AppBundle:News')
+            ->findBy(array(), array('createdAt' => 'asc'), 3 , 0);
+        return $this->render(':Front:viewnews.html.twig', array(
+            'news'      =>  $news,
+            'lastNews'  => $lastNews,
         ));
     }
 }

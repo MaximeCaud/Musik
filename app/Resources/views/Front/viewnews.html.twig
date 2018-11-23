@@ -1,0 +1,38 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/Front/viewNews.css') }}">
+{% endblock %}
+
+{% block body %}
+    {{ include(':Front/partials:_nav.html.twig') }}
+    <section class="container">
+        <h1>{{ news.title }}</h1>
+        <h6>{{ news.author.name }} . {{ news.createdAt|date('d/m/Y') }} . {{ news.category.name }}</h6>
+        <div class="contentWrapper">
+            {{ news.content }}
+        </div>
+        <div class="shareWrapper"></div>
+    </section>
+    <section class="container">
+        <h1 class="sectionTitle">Last News<primary>.</primary></h1>
+        <div class="lastnewsWrapper row">
+            {% for lnews in lastNews %}
+                <a href="{{ path('front.news.view',{id: news.id}) }}">
+                    <div class="lnewsItem col-md-3">
+                        <div class="imgItem"></div>
+                        <h3>{{ lnews.title }}</h3>
+                        <h6>{{ lnews.author.name }}</h6>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </section>
+    {{ include(':Front/partials:_footer.html.twig') }}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('build/Front/viewNews.js') }}"></script>
+{% endblock %}

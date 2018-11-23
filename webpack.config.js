@@ -24,14 +24,9 @@ Encore
     .addEntry('Front/contact', './assets/Front/js/contact.js')
     .addEntry('Front/media', './assets/Front/js/media.js')
     .addEntry('Front/news', './assets/Front/js/news.js')
+    .addEntry('Front/viewNews', './assets/Front/js/viewNews.js')
 
     .addEntry('Back/index', './assets/Back/js/index.js')
-    //.addEntry('page1', './assets/js/page1.js')
-    //.addEntry('page2', './assets/js/page2.js')
-
-    // will require an extra script tag for runtime.js
-    // but, you probably want this, unless you're building a single-page app
-    .enableSingleRuntimeChunk()
 
     .cleanupOutputBeforeBuild()
     .enableSourceMaps(!Encore.isProduction())

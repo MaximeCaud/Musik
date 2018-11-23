@@ -11,7 +11,7 @@ class NewsFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        for ($i = 0; $i < 4; $i++)
+        for ($i = 0; $i < 10; $i++)
         {
             $news = new News();
             $news->setAuthor($this->getReference(AuthorFixtures::ADMIN_AUTHOR_REFERENCE));

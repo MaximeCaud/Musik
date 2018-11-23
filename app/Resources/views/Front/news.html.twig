@@ -1,12 +1,38 @@
 {% extends 'template.html.twig' %}
 
-{% block stylesheets %}
+{% block title %}Home{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/Front/news.css') }}">
 {% endblock %}
 
 {% block body %}
-
+    {{ include(':Front/partials:_nav.html.twig') }}
+    <section>
+        <h1 class="sectionTitle">News<primary>.</primary></h1>
+        <div class="lastnewsWrapper container-fluid row">
+            {% for news in pagination %}
+                <div class="col-sm-12 col-md-4 col-lg-4">
+                    <div class="lastnewsItem" style='background:url("{{ asset("build/images/"~news.category.name~".jpg") }}");'>
+                        <div class="textWrapper">
+                            <p class="category">{{ news.category.name }}</p>
+                            <h1 class="title">{{ news.title }}</h1>
+                            <a href="{{ path('front.news.view',{id: news.id}) }}">
+                                <button type="button" class="btn btn-danger">view more</button>
+                            </a>
+                            <p class="posted">Posted: <bold>{{ news.createdAt|date('m/d/Y') }}</bold></p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </section>
+    {{ include(':Front/partials:_footer.html.twig') }}
 {% endblock %}
 
 {% block javascripts %}
+    <script src="{{ asset('build/Front/news.js') }}"></script>
 {% endblock %}

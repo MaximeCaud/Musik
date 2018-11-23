@@ -19,17 +19,21 @@
     width: 100%;
     min-height: 500px;
     background: red;
+    display: block;
+    padding: 10px;
+    color: #f1f1f1;
+    background-position: bottom;
+    background-size: contain;
+
     .textWrapper{
+      padding: 100px 50px 0px 50px;
+      height: 500px ;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      align-items: center;
-      height: 100%;
-      /**A revoir**/
+      border: 1px solid lightgray;
       .category{
         font-weight: bold;
-        color: #f1f1f1;
-
         &:before{
           content: '';
           position: absolute;
@@ -49,6 +53,38 @@
 
         }
       }
+      .title{
+        font-weight: lighter;
+        font-size: 50px;
+      }
+      button{
+        border: 2px solid #f1f1f1;
+        background: rgba(0,0,0,0);
+        font-weight: normal;
+        padding: 5px 20px;
+        width: 70%;
+        height: 40px;
+        border-radius:20px;
+
+        &:hover{
+          color: $danger;
+          border-color: $danger;
+        }
+      }
+      .posted{
+        font-weight: 300;
+        color: lightgray;
+
+        bold{
+          color: #f1f1f1;
+          font-weight: normal;
+        }
+      }
+    }
+
+    &:hover .textWrapper{
+      border: 2px solid lightgray;
+      transition: 200ms;
     }
   }
 }

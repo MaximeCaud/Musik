@@ -37,9 +37,8 @@ section{
   flex-direction: column;
 
   &:first-of-type{
-    height: calc(100vh - 56px);
+    min-height: calc(100vh - 56px);
     z-index: 1;
-    min-height: 100vh;
   }
 
   .sectionTitle{
@@ -66,5 +65,5 @@ footer{
   height: 150px;
   width: 100%;
   background: #111111;
-  margin-top: 25px;
+  margin-top: 0px;
 }

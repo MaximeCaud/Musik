@@ -16,22 +16,12 @@
             <div class="col-sm-12 col-md-6 eventWrapper">
                 <div class="col-md-12 eventDesc"></div>
                 <div class="eventList row">
-                    <a href="#" class="col-sm-2 col-md-2 eventItem">
-
-                    </a>
-                    <a href="#" class="col-sm-2 col-md-2 eventItem">
-
-                    </a>
-                    <a href="#" class="col-sm-2 col-md-2 eventItem">
-
-                    </a>
-                    <a href="#" class="col-sm-2 col-md-2 eventItem">
-
-                    </a>
-                    <a href="#" class="col-sm-2 col-md-2 eventItem">
-
-                    </a>
-
+                    {% for event in lastEvent %}
+                        <a href="#" class="col-sm-2 col-md-2 eventItem">
+                            <h1>{{ event.date|date('d') }}</h1>
+                            <h5>{{ event.date|date('M') }}<primary>.</primary></h5>
+                        </a>
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -39,52 +29,40 @@
     <section class="listevent container-fluid">
         <h1 class="sectionTitle">UPCOMING EVENTS<primary>.</primary></h1>
         <div class="eventWrapper container-fluid">
-            <div class="eventItem row">
-                <div class="eventDate col-sm-2 col-md-1">
-                    <h1>20</h1>
-                    <h5>Nov<primary>.</primary></h5>
+            {% for event in events %}
+                {% if loop.index == 6 %}
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    View more ...
+                </button>
+                <div class="collapse" id="collapseExample">
+                {% endif %}
+                <div class="eventItem row">
+                    <div class="eventDate col-sm-2 col-md-1">
+                        <h1>{{ event.date|date('d') }}</h1>
+                        <h5>{{ event.date|date('M') }}<primary>.</primary></h5>
+                    </div>
+                    <div class="eventDesc col-md-4">
+                        <h1>{{ event.title }}</h1>
+                        <p>{{ event.description|slice(0,40) }}</p>
+                    </div>
+                    <div class="eventAdress col-md-3">
+                        <h1>City:</h1>
+                        <p>{{ event.adress }}</p>
+                    </div>
+                    <div class="eventPrice col-md-2">
+                        <h5>Ticket:</h5>
+                        <h1>{{ event.price }}€</h1>
+                    </div>
+                    <div class="eventBuy col-md-2">
+                        {% if (event.url is not null) and (event.url != "")  %}
+                            <a href="{{ event.url }}">
+                                <button type="button" class="btn btn-danger">Buy</button>
+                            </a>
+                        {% endif %}
+                    </div>
                 </div>
-                <div class="eventDesc col-md-4">
-                    <h1>Title</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid.</p>
+            {% endfor %}
                 </div>
-                <div class="eventAdress col-md-3">
-                    <h1>City:</h1>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                </div>
-                <div class="eventPrice col-md-2">
-                    <h5>Ticket:</h5>
-                    <h1>21€</h1>
-                </div>
-                <div class="eventBuy col-md-2">
-                    <a href="#">
-                        <button type="button" class="btn btn-danger">Danger</button>
-                    </a>
-                </div>
-            </div>
-            <div class="eventItem row">
-                <div class="eventDate col-sm-2 col-md-1">
-                    <h1>20</h1>
-                    <h5>Nov<primary>.</primary></h5>
-                </div>
-                <div class="eventDesc col-md-4">
-                    <h1>Title</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid.</p>
-                </div>
-                <div class="eventAdress col-md-3">
-                    <h1>City:</h1>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                </div>
-                <div class="eventPrice col-md-2">
-                    <h5>Ticket:</h5>
-                    <h1>21€</h1>
-                </div>
-                <div class="eventBuy col-md-2">
-                    <a href="#">
-                        <button type="button" class="btn btn-danger">Danger</button>
-                    </a>
-                </div>
-            </div>
         </div>
     </section>
     {{ include(':Front/partials:_footer.html.twig') }}

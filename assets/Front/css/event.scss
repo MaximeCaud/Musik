@@ -44,6 +44,22 @@
 
 .listevent{
   padding-bottom: 50px;
+
+  .btn-primary{
+    height: 50px;
+    background: rgba(0,0,0,0);
+    margin-top: 25px;
+    transition: 500ms;
+    border: 2px solid #f1f1f1;
+    font-size: 20px;
+    border-radius: 25px;
+    padding: 0px 20px;
+
+    &:hover{
+      background: $danger;
+      border-color: $danger;
+    }
+  }
   .eventWrapper{
     color: #f1f1f1;
     .eventItem{
