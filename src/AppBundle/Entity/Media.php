@@ -50,12 +50,12 @@ class Media
     private $updateAt;
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Author", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Author", cascade={"persist"})
      */
     private $author;
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Category", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Category", cascade={"persist"})
      */
     private $category;
 

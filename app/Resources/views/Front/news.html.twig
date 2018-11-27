@@ -10,7 +10,7 @@
     {{ include(':Front/partials:_nav.html.twig') }}
     <section>
         <h1 class="sectionTitle">News<primary>.</primary></h1>
-        <div class="lastnewsWrapper container-fluid row">
+        <div class="lastnewsWrapper container row">
             {% for news in pagination %}
                 <div class="col-sm-12 col-md-4 col-lg-4">
                     <div class="lastnewsItem" style='background:url("{{ asset("build/images/constant/category/"~news.category.name~".jpg") }}");'>

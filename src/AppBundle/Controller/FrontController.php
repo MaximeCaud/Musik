@@ -90,8 +90,14 @@ class FrontController extends Controller
      */
     public function mediaAction()
     {
+        $manager = $this->getDoctrine()->getManager();
+        $lastSound = $manager->getRepository('AppBundle:Media')
+            ->findBy(array('category' => '5'), array('publishedAt' => 'ASC'), 4, 0);
+        $lastClip = $manager->getRepository('AppBundle:Media')
+            ->findBy(array('category' => '4'), array('publishedAt' => 'ASC'), 4, 0);
         return $this->render(':Front:media.html.twig',array(
-
+            'sounds'    =>  $lastSound,
+            'clips'     =>  $lastClip
         ));
     }
 
