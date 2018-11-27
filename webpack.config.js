@@ -27,6 +27,13 @@ Encore
     .addEntry('Front/viewNews', './assets/Front/js/viewNews.js')
 
     .addEntry('Back/index', './assets/Back/js/index.js')
+    .addEntry('Back/event', './assets/Back/js/event.js')
+    .addEntry('Back/editevent', './assets/Back/js/editevent.js')
+    .addEntry('Back/news', './assets/Back/js/news.js')
+    .addEntry('Back/editnews', './assets/Back/js/editnews.js')
+    .addEntry('Back/media', './assets/Back/js/media.js')
+    .addEntry('Back/editmedia', './assets/Back/js/editmedia.js')
+
 
     .cleanupOutputBeforeBuild()
     .enableSourceMaps(!Encore.isProduction())
