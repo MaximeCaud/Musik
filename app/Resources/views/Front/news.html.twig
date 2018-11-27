@@ -13,7 +13,7 @@
         <div class="lastnewsWrapper container-fluid row">
             {% for news in pagination %}
                 <div class="col-sm-12 col-md-4 col-lg-4">
-                    <div class="lastnewsItem" style='background:url("{{ asset("build/images/"~news.category.name~".jpg") }}");'>
+                    <div class="lastnewsItem" style='background:url("{{ asset("build/images/constant/category/"~news.category.name~".jpg") }}");'>
                         <div class="textWrapper">
                             <p class="category">{{ news.category.name }}</p>
                             <h1 class="title">{{ news.title }}</h1>

@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Form\Type\ContactFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -39,10 +40,32 @@ class FrontController extends Controller
     /**
      * @Route("/contact", name="front.contact")
      */
-    public function contactAction()
+    public function contactAction(Request $request, \Swift_Mailer $mailer)
     {
-        return $this->render(':Front:contact.html.twig', array(
 
+        $form = $this->createForm(ContactFormType::class, null,array(
+            'action'    => $this->generateUrl('front.contact'),
+            'method'    => 'POST'
+        ));
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()){
+            $data = $form->getData();
+            $message = (new \Swift_Message("New Mail"))
+                ->setFrom($data['email'])
+                ->setTo($this->getParameter('mailer_user'))
+                ->setBody($this->renderView(':Emails:contact.html.twig', array(
+                    'data'  =>  $data
+                ))
+                    ,
+                    'text/html'
+                );
+
+            $mailer->send($message);
+
+            return $this->redirectToRoute('front.contact');
+        }
+        return $this->render(':Front:contact.html.twig', array(
+            'form'  =>  $form->createView()
         ));
     }
 
@@ -107,4 +130,6 @@ class FrontController extends Controller
             'lastNews'  => $lastNews,
         ));
     }
+
+
 }
