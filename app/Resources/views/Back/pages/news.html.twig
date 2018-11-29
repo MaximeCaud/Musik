@@ -1,0 +1,19 @@
+{% extends ':Back:template.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/Back/news.css') }}">
+{% endblock %}
+
+{% block body %}
+    {% include ':Back/partials:_nav.html.twig' %}
+    <section class="contentWrapper">
+
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('build/Back/news.js') }}"></script>
+{% endblock %}

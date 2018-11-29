@@ -1,0 +1,22 @@
+body{
+  background: #f1f1f1;
+  .verticalNav{
+    width: 200px;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: #1f1f1f;
+    padding: 15px 0px;
+  }
+
+  .contentWrapper{
+    padding-left: 15px;
+    padding-top: 25px;
+    width: calc(100% - 200px);
+    margin-left: 200px;
+    min-height: 100vh;
+  }
+}

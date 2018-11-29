@@ -1,0 +1,35 @@
+{% extends ':Back:template.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/Back/index.css') }}">
+{% endblock %}
+
+{% block body %}
+    {% include ':Back/partials:_nav.html.twig' %}
+    <section class="contentWrapper container-fluid row">
+        <div class="list-group col-md-4">
+            <div class="list-group-title">Last Media</div>
+            {% for media in lastMedia %}
+                <a href="{{ path('back.media.edit', {'id': media.id}) }}" class="list-group-item list-group-item-action">{{ media.name }}</a>
+            {% endfor %}
+        </div>
+        <div class="list-group col-md-4">
+            <div class="list-group-title">Last Event</div>
+            {% for event in lastEvent %}
+                <a href="{{ path('back.media.edit', {'id': event.id}) }}" class="list-group-item list-group-item-action">{{ event.title }}</a>
+            {% endfor %}
+        </div>
+        <div class="list-group col-md-4">
+            <div class="list-group-title">Last News</div>
+            {% for news in lastNews %}
+                <a href="{{ path('back.media.edit', {'id': news.id}) }}" class="list-group-item list-group-item-action">{{ news.title }}</a>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('build/Back/index.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,20 @@
+@import "~bootstrap/scss/bootstrap";
+
+body{
+  background: #1f1f1f;
+  .form{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    form{
+      background: #f1f1f1;
+      border: 1px solid gray;
+      border-radius: 15px;
+      padding: 25px;
+      text-align: center;
+    }
+  }
+}

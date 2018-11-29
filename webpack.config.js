@@ -34,6 +34,8 @@ Encore
     .addEntry('Back/media', './assets/Back/js/media.js')
     .addEntry('Back/editmedia', './assets/Back/js/editmedia.js')
 
+    .addEntry('FOSUserBundle/login', './assets/FOSUserBundle/js/login.js')
+
 
     .cleanupOutputBeforeBuild()
     .enableSourceMaps(!Encore.isProduction())

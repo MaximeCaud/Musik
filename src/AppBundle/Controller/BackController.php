@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class BackController extends Controller
@@ -14,8 +15,19 @@ class BackController extends Controller
      */
     public function indexAction()
     {
-        return $this->render(':Back:index.html.twig', array(
+        $manager = $this->getDoctrine()->getManager();
 
+        $lastMedia = $manager->getRepository('AppBundle:Media')
+            ->findBy(array(), array('publishedAt' => 'ASC'), 10, 0);
+        $lastNews = $manager->getRepository('AppBundle:News')
+            ->findBy(array(), array('createdAt' => 'ASC'), 10 , 0);
+        $lastEvent = $manager->getRepository('AppBundle:Event')
+            ->findBy(array(), array('createdAt' => 'ASC'), 10 , 0);
+
+        return $this->render(':Back/pages:index.html.twig', array(
+            'lastMedia'     =>  $lastMedia,
+            'lastNews'      =>  $lastNews,
+            'lastEvent'     =>  $lastEvent
         ));
     }
 
@@ -23,30 +35,63 @@ class BackController extends Controller
     /**
      * @Route("/admin/media", name="back.media")
      */
-    public function mediaAction()
+    public function mediaAction(Request $request)
     {
-        return $this->render(':Back:media.html.twig', array(
+        $manager    = $this->get('doctrine.orm.entity_manager');
+        $dql        = "SELECT a FROM AppBundle:Media a";
+        $query      = $manager->createQuery($dql);
 
+        $paginator  = $this->get('knp_paginator');
+        $pagination  = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            20
+        );
+
+        return $this->render(':Back/pages:media.html.twig', array(
+            'pagination'    => $pagination
         ));
     }
 
     /**
      * @Route("/admin/news", name="back.news")
      */
-    public function newsAction()
+    public function newsAction(Request $request)
     {
-        return $this->render(':Back:news.html.twig', array(
+        $manager    = $this->get('doctrine.orm.entity_manager');
+        $dql        = "SELECT a FROM AppBundle:Media a";
+        $query      = $manager->createQuery($dql);
 
+        $paginator  = $this->get('knp_paginator');
+        $pagination  = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            20
+        );
+
+        return $this->render(':Back/pages:news.html.twig', array(
+            'pagination'    => $pagination
         ));
     }
 
     /**
      * @Route("/admin/event", name="back.event")
      */
-    public function eventAction()
+    public function eventAction(Request $request)
     {
-        return $this->render(':Back:event.html.twig', array(
+        $manager    = $this->get('doctrine.orm.entity_manager');
+        $dql        = "SELECT a FROM AppBundle:Media a";
+        $query      = $manager->createQuery($dql);
 
+        $paginator  = $this->get('knp_paginator');
+        $pagination  = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            20
+        );
+
+        return $this->render(':Back/pages:event.html.twig', array(
+            'pagination'    => $pagination
         ));
     }
 
@@ -55,7 +100,7 @@ class BackController extends Controller
      */
     public function editmediaAction($id)
     {
-        return $this->render(':Back:editmedia.html.twig', array(
+        return $this->render(':Back/pages:editmedia.html.twig', array(
 
         ));
     }
@@ -65,7 +110,7 @@ class BackController extends Controller
      */
     public function editnewsAction($id)
     {
-        return $this->render(':Back:editnews.html.twig', array(
+        return $this->render(':Back/pages:editnews.html.twig', array(
 
         ));
     }
@@ -75,7 +120,7 @@ class BackController extends Controller
      */
     public function editeventAction($id)
     {
-        return $this->render(':Back:editevent.html.twig', array(
+        return $this->render(':Back/pages:editevent.html.twig', array(
 
         ));
     }

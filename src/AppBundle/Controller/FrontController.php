@@ -20,7 +20,7 @@ class FrontController extends Controller
             ->findBy(array(), array('createdAt' => 'asc'), 6 , 0);
         $media = $manager->getRepository('AppBundle:Media')
             ->findBy(array(), array('publishedAt' => 'asc'), 4 ,0);
-        return $this->render(':Front:index.html.twig', array(
+        return $this->render(':Front/pages:index.html.twig', array(
             'listnews'  =>  $news,
             'listmedia' =>  $media,
 
@@ -32,7 +32,7 @@ class FrontController extends Controller
      */
     public function aboutAction()
     {
-        return $this->render(':Front:about.html.twig', array(
+        return $this->render(':Front/pages:about.html.twig', array(
 
         ));
     }
@@ -64,7 +64,7 @@ class FrontController extends Controller
 
             return $this->redirectToRoute('front.contact');
         }
-        return $this->render(':Front:contact.html.twig', array(
+        return $this->render(':Front/pages:contact.html.twig', array(
             'form'  =>  $form->createView()
         ));
     }
@@ -79,7 +79,7 @@ class FrontController extends Controller
             ->findBy(array(), array('date' => 'asc'), 5 , 0);
         $events = $manager->getRepository('AppBundle:Event')
             ->findBy(array(), array('date' => 'asc'), 10 , 0);
-        return $this->render(':Front:event.html.twig', array(
+        return $this->render(':Front/pages:event.html.twig', array(
             'events'        =>  $events,
             'lastEvent'     =>  $lastevent,
         ));
@@ -95,7 +95,7 @@ class FrontController extends Controller
             ->findBy(array('category' => '5'), array('publishedAt' => 'ASC'), 4, 0);
         $lastClip = $manager->getRepository('AppBundle:Media')
             ->findBy(array('category' => '4'), array('publishedAt' => 'ASC'), 4, 0);
-        return $this->render(':Front:media.html.twig',array(
+        return $this->render(':Front/pages:media.html.twig',array(
             'sounds'    =>  $lastSound,
             'clips'     =>  $lastClip
         ));
@@ -116,7 +116,7 @@ class FrontController extends Controller
             $request->query->getInt('page', 1),
             6
         );
-        return $this->render(':Front:news.html.twig',array(
+        return $this->render(':Front/pages:news.html.twig',array(
             'pagination'    => $pagination
         ));
     }
