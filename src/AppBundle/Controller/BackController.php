@@ -45,7 +45,7 @@ class BackController extends Controller
         $pagination  = $paginator->paginate(
             $query,
             $request->query->getInt('page', 1),
-            20
+            10
         );
 
         return $this->render(':Back/pages:media.html.twig', array(
@@ -59,7 +59,7 @@ class BackController extends Controller
     public function newsAction(Request $request)
     {
         $manager    = $this->get('doctrine.orm.entity_manager');
-        $dql        = "SELECT a FROM AppBundle:Media a";
+        $dql        = "SELECT a FROM AppBundle:News a";
         $query      = $manager->createQuery($dql);
 
         $paginator  = $this->get('knp_paginator');
@@ -80,7 +80,7 @@ class BackController extends Controller
     public function eventAction(Request $request)
     {
         $manager    = $this->get('doctrine.orm.entity_manager');
-        $dql        = "SELECT a FROM AppBundle:Media a";
+        $dql        = "SELECT a FROM AppBundle:Event a";
         $query      = $manager->createQuery($dql);
 
         $paginator  = $this->get('knp_paginator');
