@@ -18,13 +18,13 @@
         <div class="list-group col-md-4">
             <h2 class="list-group-title">Last Event</h2>
             {% for event in lastEvent %}
-                <a href="{{ path('back.media.edit', {'id': event.id}) }}" class="list-group-item list-group-item-action">{{ event.title }}</a>
+                <a href="{{ path('back.event.edit', {'id': event.id}) }}" class="list-group-item list-group-item-action">{{ event.title }}</a>
             {% endfor %}
         </div>
         <div class="list-group col-md-4">
             <h2 class="list-group-title">Last News</h2>
             {% for news in lastNews %}
-                <a href="{{ path('back.media.edit', {'id': news.id}) }}" class="list-group-item list-group-item-action">{{ news.title }}</a>
+                <a href="{{ path('back.news.edit', {'id': news.id}) }}" class="list-group-item list-group-item-action">{{ news.title }}</a>
             {% endfor %}
         </div>
     </section>

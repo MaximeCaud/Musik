@@ -3,6 +3,12 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\Event;
+use AppBundle\Entity\Media;
+use AppBundle\Entity\News;
+use AppBundle\Form\Type\EventFormType;
+use AppBundle\Form\Type\MediaFormType;
+use AppBundle\Form\Type\NewsFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -98,30 +104,105 @@ class BackController extends Controller
     /**
      * @Route("/admin/media/{id}", name="back.media.edit")
      */
-    public function editmediaAction($id)
+    public function editmediaAction(Request $request, $id)
     {
-        return $this->render(':Back/pages:editmedia.html.twig', array(
+        $manager = $this->getDoctrine()->getManager();
+        $media = $manager->getRepository('AppBundle:Media')
+            ->find($id);
 
+        $form= $this->createForm(MediaFormType::class, $media, array(
+            'method'        => 'POST',
+            'action'        => $this->generateUrl('back.media.edit', array(
+                'id'    =>  $id
+            ))
+        ));
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $media = new Media();
+            $media= $form->getData();
+            $media->setUpdateAt(new \DateTime());
+            $manager->persist($media);
+            $manager->flush();
+
+            return $this->redirectToRoute('back.media.edit',array(
+                'id' => $id
+            ));
+        }
+
+        return $this->render(':Back/pages:editmedia.html.twig', array(
+            'form'      => $form->createView()
         ));
     }
 
     /**
      * @Route("/admin/news/{id}", name="back.news.edit")
      */
-    public function editnewsAction($id)
+    public function editnewsAction(Request $request ,$id)
     {
-        return $this->render(':Back/pages:editnews.html.twig', array(
+        $manager = $this->getDoctrine()->getManager();
+        $news = $manager->getRepository('AppBundle:News')
+            ->find($id);
 
+        $form = $this->createForm(NewsFormType::class, $news, array(
+            'method'        => 'POST',
+            'action'        => $this->generateUrl('back.news.edit', array(
+                'id'    =>  $id
+            ))
+        ));
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $news = new News();
+            $news= $form->getData();
+            $news->setUpdateAt(new \DateTime());
+            $manager->persist($news);
+            $manager->flush();
+
+            return $this->redirectToRoute('back.news.edit',array(
+               'id' => $id
+            ));
+        }
+
+        return $this->render(':Back/pages:editnews.html.twig', array(
+            'form'      => $form->createView()
         ));
     }
 
     /**
      * @Route("/admin/event/{id}", name="back.event.edit")
      */
-    public function editeventAction($id)
+    public function editeventAction(Request $request, $id)
     {
-        return $this->render(':Back/pages:editevent.html.twig', array(
+        $manager = $this->getDoctrine()->getManager();
+        $event = $manager->getRepository('AppBundle:Event')
+            ->find($id);
 
+        $form = $this->createForm(EventFormType::class, $event, array(
+            'method'        => 'POST',
+            'action'        => $this->generateUrl('back.event.edit', array(
+                'id'    =>  $id
+            ))
+        ));
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $event = new Event();
+            $event= $form->getData();
+            $event->setUpdateAt(new \DateTime());
+            $manager->persist($event);
+            $manager->flush();
+
+            return $this->redirectToRoute('back.event.edit',array(
+                'id' => $id
+            ));
+        }
+
+        return $this->render(':Back/pages:editevent.html.twig', array(
+            'form'      => $form->createView()
         ));
     }
 

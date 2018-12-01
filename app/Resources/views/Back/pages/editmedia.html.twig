@@ -9,8 +9,38 @@
 
 {% block body %}
     {% include ':Back/partials:_nav.html.twig' %}
-    <section class="contentWrapper">
+    <section class="contentWrapper container-fluid">
+        <div class="formWrapper container col-sm 12 col-md-10 col-lg-12">
+            {{ form_start(form) }}
+            <div class="form-row">
+                <div class="form-group col-sm-12">
+                    {{ form_label(form.name) }}
+                    {{ form_widget(form.name) }}
+                    {{ form_errors(form.name) }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-sm-12">
+                    <div class="form-group">
+                        {{ form_label(form.category) }}
+                        {{ form_widget(form.category) }}
+                        {{ form_errors(form.category) }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-sm-12">
+                    <div class="form-group">
+                        {{ form_label(form.url) }}
+                        {{ form_widget(form.url) }}
+                        {{ form_errors(form.url) }}
+                    </div>
+                </div>
+            </div>
 
+            <button type="submit" class="btn btn-primary">Submit</button>
+            {{ form_end(form) }}
+        </div>
     </section>
 {% endblock %}
 
