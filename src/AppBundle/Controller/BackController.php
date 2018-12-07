@@ -37,7 +37,6 @@ class BackController extends Controller
         ));
     }
 
-
     /**
      * @Route("/admin/media", name="back.media")
      */
@@ -102,7 +101,7 @@ class BackController extends Controller
     }
 
     /**
-     * @Route("/admin/media/{id}", name="back.media.edit")
+     * @Route("/admin/media/{id}", name="back.media.edit", requirements={"id"="\d+"})
      */
     public function editmediaAction(Request $request, $id)
     {
@@ -137,7 +136,7 @@ class BackController extends Controller
     }
 
     /**
-     * @Route("/admin/news/{id}", name="back.news.edit")
+     * @Route("/admin/news/{id}", name="back.news.edit", requirements={"id"="\d+"})
      */
     public function editnewsAction(Request $request ,$id)
     {
@@ -172,7 +171,7 @@ class BackController extends Controller
     }
 
     /**
-     * @Route("/admin/event/{id}", name="back.event.edit")
+     * @Route("/admin/event/{id}", name="back.event.edit", requirements={"id"="\d+"})
      */
     public function editeventAction(Request $request, $id)
     {
@@ -206,5 +205,153 @@ class BackController extends Controller
         ));
     }
 
+    /**
+     * @Route("/admin/event/add", name="back.event.add")
+     */
+    public function addeventAction(Request $request)
+    {
+        $form = $this->createForm(EventFormType::class,new Event() , array(
+            'method'        => 'POST',
+            'action'        => $this->generateUrl('back.event.add', array(
 
+            ))
+        ));
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $manager = $this->getDoctrine()->getManager();
+
+            $event= $form->getData();
+            $event->setUpdateAt(new \DateTime());
+            $event->setCreatedAt(new \DateTime());
+            $event->setAuthor($this->getUser());
+
+
+            $manager->persist($event);
+            $manager->flush();
+
+            return $this->redirectToRoute('back.event',array(
+
+            ));
+        }
+
+        return $this->render(':Back/pages:addevent.html.twig', array(
+            'form'      => $form->createView()
+        ));
+    }
+
+    /**
+     * @Route("/admin/media/add", name="back.media.add")
+     */
+    public function addmediaAction(Request $request)
+    {
+        $form = $this->createForm(MediaFormType::class,new Media() , array(
+            'method'        => 'POST',
+            'action'        => $this->generateUrl('back.media.add', array(
+
+            ))
+        ));
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $manager = $this->getDoctrine()->getManager();
+
+            $event= $form->getData();
+            $event->setUpdateAt(new \DateTime());
+            $event->setPublishedAt(new \DateTime());
+            $event->setAuthor($this->getUser());
+
+
+            $manager->persist($event);
+            $manager->flush();
+
+            return $this->redirectToRoute('back.media',array(
+
+            ));
+        }
+
+        return $this->render(':Back/pages:addmedia.html.twig', array(
+            'form'      => $form->createView()
+        ));
+    }
+
+    /**
+     * @Route("/admin/news/add", name="back.news.add")
+     */
+    public function addnewsAction(Request $request)
+    {
+        $form = $this->createForm(NewsFormType::class,new News() , array(
+            'method'        => 'POST',
+            'action'        => $this->generateUrl('back.news.add', array(
+
+            ))
+        ));
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $manager = $this->getDoctrine()->getManager();
+
+            $event= $form->getData();
+            $event->setUpdateAt(new \DateTime());
+            $event->setCreatedAt(new \DateTime());
+            $event->setAuthor($this->getUser());
+
+
+            $manager->persist($event);
+            $manager->flush();
+
+            return $this->redirectToRoute('back.news',array(
+
+            ));
+        }
+
+        return $this->render(':Back/pages:addnews.html.twig', array(
+            'form'      => $form->createView()
+        ));
+    }
+
+    /**
+     * @Route("/admin/event/delete/{id}", name="back.event.delete", requirements={"id"="\d+"})
+     */
+    public function deleteeventAction($id)
+    {
+        $manager = $this->getDoctrine()->getManager();
+        $event = $manager->getRepository('AppBundle:Event')
+            ->find($id);
+        $manager->remove($event);
+        $manager->flush();
+
+        return $this->redirectToRoute('back.event');
+    }
+
+    /**
+     * @Route("/admin/media/delete/{id}", name="back.media.delete", requirements={"id"="\d+"})
+     */
+    public function deletemediaAction($id)
+    {
+        $manager = $this->getDoctrine()->getManager();
+        $event = $manager->getRepository('AppBundle:Media')
+            ->find($id);
+        $manager->remove($event);
+        $manager->flush();
+
+        return $this->redirectToRoute('back.media');
+    }
+
+    /**
+     * @Route("/admin/news/delete/{id}", name="back.news.delete", requirements={"id"="\d+"})
+     */
+    public function deletenewsAction($id)
+    {
+        $manager = $this->getDoctrine()->getManager();
+        $event = $manager->getRepository('AppBundle:News')
+            ->find($id);
+        $manager->remove($event);
+        $manager->flush();
+
+        return $this->redirectToRoute('back.news');
+    }
 }

@@ -66,7 +66,7 @@ class Event
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created_at", type="datetime")
+     * @ORM\Column(name="created_at", type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $createdAt;
 
@@ -78,7 +78,7 @@ class Event
     private $updateAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Author")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
      * @ORM\JoinColumn(nullable=false)
      */
     private $author;
@@ -264,11 +264,11 @@ class Event
     /**
      * Set author
      *
-     * @param \AppBundle\Entity\Author $author
+     * @param \AppBundle\Entity\User $author
      *
      * @return Event
      */
-    public function setAuthor(\AppBundle\Entity\Author $author = null)
+    public function setAuthor(\AppBundle\Entity\User $author = null)
     {
         $this->author = $author;
 
@@ -278,7 +278,7 @@ class Event
     /**
      * Get author
      *
-     * @return \AppBundle\Entity\Author
+     * @return \AppBundle\Entity\User
      */
     public function getAuthor()
     {

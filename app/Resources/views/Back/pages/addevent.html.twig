@@ -1,0 +1,63 @@
+{% extends ':Back:template.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/Back/editevent.css') }}">
+{% endblock %}
+
+{% block body %}
+    {% include ':Back/partials:_nav.html.twig' %}
+    <section class="contentWrapper container-fluid">
+        <div class="formWrapper container col-sm 12 col-md-10 col-lg-12">
+            {{ form_start(form) }}
+            <div class="form-row">
+                <div class="form-group col-sm-12">
+                    {{ form_label(form.title) }}
+                    {{ form_widget(form.title) }}
+                    {{ form_errors(form.title) }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-sm-6">
+                    {{ form_label(form.date) }}
+                    {{ form_widget(form.date) }}
+                    {{ form_errors(form.date) }}
+                </div>
+                <div class="form-group col-sm-2">
+                    {{ form_label(form.price) }}
+                    {{ form_widget(form.price) }}
+                    {{ form_errors(form.price) }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-sm-12">
+                    {{ form_label(form.adress) }}
+                    {{ form_widget(form.adress) }}
+                    {{ form_errors(form.adress) }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-sm-12">
+                    {{ form_label(form.url) }}
+                    {{ form_widget(form.url) }}
+                    {{ form_errors(form.url) }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-sm-12">
+                    {{ form_label(form.description) }}
+                    {{ form_widget(form.description) }}
+                    {{ form_errors(form.description) }}
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            {{ form_end(form) }}
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('build/Back/editevent.js') }}"></script>
+{% endblock %}

@@ -12,7 +12,7 @@
         <h1>{{ news.title }}</h1>
         <h6>{{ news.author.name }} . {{ news.createdAt|date('d/m/Y') }} . {{ news.category.name }}</h6>
         <div class="contentWrapper">
-            {{ news.content }}
+            {{ news.content|raw }}
         </div>
         <div class="shareWrapper"></div>
     </section>

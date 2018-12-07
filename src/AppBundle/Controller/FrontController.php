@@ -122,7 +122,7 @@ class FrontController extends Controller
     }
 
     /**
-     * @Route("/view/{id}", name="front.news.view")
+     * @Route("/view/{id}", name="front.news.view", requirements={"id"="\d+"})
      */
     public function viewNewsAction($id)
     {
@@ -131,7 +131,7 @@ class FrontController extends Controller
             ->find($id);
         $lastNews = $manager->getRepository('AppBundle:News')
             ->findBy(array(), array('createdAt' => 'asc'), 3 , 0);
-        return $this->render(':Front:viewnews.html.twig', array(
+        return $this->render(':Front/pages:viewnews.html.twig', array(
             'news'      =>  $news,
             'lastNews'  => $lastNews,
         ));

@@ -10,10 +10,12 @@
 {% block body %}
     {% include ':Back/partials:_nav.html.twig' %}
     <section class="contentWrapper container-fluid">
+        <a href="{{ path('back.event.add') }}">Add</a>
         <div class="list-group col-md-8">
             <h2 class="list-group-title">All News</h2>
             {% for event in pagination %}
-                <a href="{{ path('back.event.edit', {'id': event.id}) }}" class="list-group-item list-group-item-action">{{ event.title }}</a>
+                <a href="{{ path('back.event.edit', {'id': event.id}) }}" class="list-group-item list-group-item-action">{{ event.title }}
+                    <a href="{{ path('back.event.delete', {'id': event.id}) }}">remove</a></a>
 
             {% endfor %}
         </div>

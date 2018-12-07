@@ -36,7 +36,7 @@ class News
     private $content;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Author")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
      * @ORM\JoinColumn(nullable=false)
      */
     private $author;
@@ -195,11 +195,11 @@ class News
     /**
      * Set author
      *
-     * @param \AppBundle\Entity\Author $author
+     * @param \AppBundle\Entity\User $author
      *
      * @return News
      */
-    public function setAuthor(\AppBundle\Entity\Author $author = null)
+    public function setAuthor(\AppBundle\Entity\User $author = null)
     {
         $this->author = $author;
 
@@ -209,7 +209,7 @@ class News
     /**
      * Get author
      *
-     * @return \AppBundle\Entity\Author
+     * @return \AppBundle\Entity\User
      */
     public function getAuthor()
     {

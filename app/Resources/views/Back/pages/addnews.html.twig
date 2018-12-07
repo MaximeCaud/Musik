@@ -1,0 +1,38 @@
+{% extends ':Back:template.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/Back/editnews.css') }}">
+{% endblock %}
+
+{% block body %}
+    {% include ':Back/partials:_nav.html.twig' %}
+    <section class="contentWrapper container-fluid">
+        <div class="formWrapper col-sm 12 col-md-10 col-lg-12">
+            {{ form_start(form) }}
+            <div class="form-group">
+                {{ form_label(form.title) }}
+                {{ form_widget(form.title) }}
+                {{ form_errors(form.title) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.category) }}
+                {{ form_widget(form.category) }}
+                {{ form_errors(form.category) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.content) }}
+                {{ form_widget(form.content) }}
+                {{ form_errors(form.content) }}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            {{ form_end(form) }}
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('build/Back/editnews.js') }}"></script>
+{% endblock %}

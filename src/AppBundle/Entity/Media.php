@@ -50,7 +50,7 @@ class Media
     private $updateAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Author", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", cascade={"persist"})
      */
     private $author;
 
@@ -168,11 +168,11 @@ class Media
     /**
      * Set author
      *
-     * @param \AppBundle\Entity\Author $author
+     * @param \AppBundle\Entity\User $author
      *
      * @return Media
      */
-    public function setAuthor(\AppBundle\Entity\Author $author = null)
+    public function setAuthor(\AppBundle\Entity\User $author = null)
     {
         $this->author = $author;
 
